@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Controller\GameDevgame.cs" />
     <Compile Include="Controller\Program.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +107,6 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
