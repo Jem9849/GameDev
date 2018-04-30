@@ -39,6 +39,14 @@ namespace GameDev.Model
             get { return active; }
             set { active = value; }
         }
+
+        // Hit points of player
+        private int health;
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
     }
    
 }
