@@ -28,6 +28,17 @@ namespace GameDev.Model
             get { return playerTexture; }
             set { playerTexture = value; }
         }
+
+        // Relative position of player to upper left. Also structs can't be used as a property.
+        public Vector2 Position;
+
+        // Player state
+        private bool active;
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
     }
    
 }
