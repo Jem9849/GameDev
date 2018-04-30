@@ -20,6 +20,14 @@ namespace GameDev.Model
         {
 
         }
+
+        // Animation for Player
+        private Texture2D playerTexture;
+        public Texture2D PlayerTexture
+        {
+            get { return playerTexture; }
+            set { playerTexture = value; }
+        }
     }
    
 }
