@@ -2,6 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+// Reference for all Model objects
+using GameDev.Model;
+
+
 namespace GameDev.Controller
 {
     /// <summary>
@@ -11,7 +15,11 @@ namespace GameDev.Controller
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+
+        // Represents the player 
+        private Player player;
+
+
         public GameDevgame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -28,6 +36,9 @@ namespace GameDev.Controller
         {
             // TODO: Add your initialization logic here
 
+            // Initialize the player class
+            player = new Player();
+
             base.Initialize();
         }
 
@@ -39,6 +50,15 @@ namespace GameDev.Controller
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Load the player resources 
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, 
+                GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+
+            player.Initialize(Content.Load<Texture2D>("Texture/player"), playerPosition);
+
+
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -75,6 +95,12 @@ namespace GameDev.Controller
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // Start drawing 
+            spriteBatch.Begin();
+            // Draw the Player 
+            player.Draw(spriteBatch);
+            // Stop drawing 
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
