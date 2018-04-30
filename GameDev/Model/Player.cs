@@ -6,9 +6,18 @@ namespace GameDev.Model
 {
     public class Player
     {
-        public void Initialize()
+        public void Initialize(Texture2D texture, Vector2 position)
         {
+            PlayerTexture = texture;
 
+            // Start pos for player near middle and back.
+            Position = position;
+
+            // Active true
+            Active = true;
+
+            // Player health
+            Health = 100;
         }
 
         public void Update()
