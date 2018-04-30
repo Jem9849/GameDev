@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameDev
+namespace GameDev.Controller
 {
     /// <summary>
     /// The main class.
