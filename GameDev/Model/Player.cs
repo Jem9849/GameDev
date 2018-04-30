@@ -47,6 +47,18 @@ namespace GameDev.Model
             get { return health; }
             set { health = value; }
         }
+
+        // The width of player
+        public int Width
+        {
+            get { return PlayerTexture.Width; }
+        }
+
+        // The height of player
+        public int Height
+        {
+            get { return PlayerTexture.Height; }
+        }
     }
-   
+
 }
