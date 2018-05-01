@@ -35,7 +35,7 @@ namespace GameDev.Model
 		public int Health
 		{
 			get { return health; }
-		s	et { health = value; }
+			set { health = value; }
 		}
 
 		// The amount of damage the enemy inflicts on the player ship
@@ -120,7 +120,7 @@ namespace GameDev.Model
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
-			// Draw animation
+			// Draw the animation
 			enemyAnimation.Draw(spriteBatch);
 		}
 	}
