@@ -141,6 +141,9 @@ namespace GameDev.Controller
             currentKeyboardState = Keyboard.GetState();
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
+            // Updates player
+            UpdatePlayer(gameTime);
+
             base.Update(gameTime);
         }
 
