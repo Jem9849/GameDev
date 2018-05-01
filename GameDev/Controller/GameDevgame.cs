@@ -102,6 +102,30 @@ namespace GameDev.Controller
                 * playerMoveSpeed;
             player.Position.Y += currentGamePadState.ThumbSticks.Left.Y
                 * playerMoveSpeed;
+            // Use keyboard/dpad
+            if (currentKeyboardState.IsKeyDown(Keys.Left) ||
+                currentGamePadState.DPad.Left == ButtonState.Pressed)
+            {
+                player.Position.X -= playerMoveSpeed;
+            }
+            
+            if (currentKeyboardState.IsKeyDown(Keys.Right) ||
+                currentGamePadState.DPad.Right == ButtonState.Pressed)
+            {
+                player.Position.X += playerMoveSpeed;
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Up) ||
+                currentGamePadState.DPad.Up == ButtonState.Pressed)
+            {
+                player.Position.Y -= playerMoveSpeed;
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Down) ||
+                currentGamePadState.DPad.Down == ButtonState.Pressed)
+            {
+                player.Position.Y += playerMoveSpeed;
+            }
 
             base.Update(gameTime);
         }
