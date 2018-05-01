@@ -255,5 +255,28 @@ namespace GameDev.Controller
 			// Add the enemy to the active enemies list
 			enemies.Add(enemy);
 		}
+
+		private void UpdateEnemies(GameTime gameTime)
+		{
+			// Spawn a new enemy enemy every 1.5 seconds
+			if (gameTime.TotalGameTime - previousSpawnTime > enemySpawnTime)
+			{
+				previousSpawnTime = gameTime.TotalGameTime;
+
+				// Add an Enemy
+				AddEnemy();
+			}
+
+			// Update the Enemies
+			for (int i = enemies.Count - 1; i >= 0; i--)
+			{
+				enemies[i].Update(gameTime);
+
+				if (enemies[i].Active == false)
+				{
+					enemies.RemoveAt(i);
+				}
+			}
+		}
     }
 }
