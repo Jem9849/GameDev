@@ -114,6 +114,11 @@ namespace GameDev.Controller
         private void UpdatePlayer(GameTime gameTime)
         {
             player.Update(gameTime);
+
+			// Update the parallaxing background
+			bgLayer1.Update();
+			bgLayer2.Update();
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -183,6 +188,13 @@ namespace GameDev.Controller
 
             // Start drawing 
             spriteBatch.Begin();
+
+			spriteBatch.Draw(mainBackground, Vector2.Zero, Color.White);
+
+			// Draw the moving background
+			bgLayer1.Draw(spriteBatch);
+			bgLayer2.Draw(spriteBatch);
+
             // Draw the Player 
             player.Draw(spriteBatch);
             // Stop drawing 
