@@ -205,6 +205,9 @@ namespace GameDev.Controller
 
             // Updates player
             UpdatePlayer(gameTime);
+			// Update the enemies
+			UpdateEnemies(gameTime);
+
 
             base.Update(gameTime);
         }
@@ -228,7 +231,15 @@ namespace GameDev.Controller
 
             // Draw the Player 
             player.Draw(spriteBatch);
-            // Stop drawing 
+
+			// Draw the Enemies
+			for (int i = 0; i<enemies.Count; i++)
+			{
+				enemies[i].Draw(spriteBatch);
+			}
+
+
+            // Stop drawing
             spriteBatch.End();
             // TODO: Add your drawing code here
 
