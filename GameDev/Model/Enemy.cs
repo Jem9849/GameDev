@@ -118,9 +118,10 @@ namespace GameDev.Model
 		}
 
 
-		public void Draw()
+		public void Draw(SpriteBatch spriteBatch)
 		{
-			
+			// Draw animation
+			enemyAnimation.Draw(spriteBatch);
 		}
 	}
 }
