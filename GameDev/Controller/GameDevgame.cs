@@ -83,6 +83,19 @@ namespace GameDev.Controller
 
 			mainBackground = Content.Load<Texture2D>("Texture/mainbackground");
 
+			// Initialize the enemies list
+			enemies = new List<Enemy> ();
+
+			// Set the time keepers to zero
+			previousSpawnTime = TimeSpan.Zero;
+
+			// Used to determine how fast enemy respawns
+			enemySpawnTime = TimeSpan.FromSeconds(1.0f);
+
+			// Initialize our random number generator
+			random = new Random();
+
+
             base.Initialize();
         }
 
@@ -103,6 +116,8 @@ namespace GameDev.Controller
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(playerAnimation, playerPosition);
+
+			enemyTexture = Content.Load<Texture2D>("Animation/mineAnimation");
 
 
 
@@ -219,5 +234,26 @@ namespace GameDev.Controller
 
             base.Draw(gameTime);
         }
+
+		private void AddEnemy()
+		{
+			// Create the animation object
+			Animation enemyAnimation = new Animation();
+
+			// Initialize the animation with the correct animation information
+			enemyAnimation.Initialize(enemyTexture, Vector2.Zero, 47, 61, 8, 30, Color.White, 1f, true);
+
+			// Randomly generate the position of the enemy
+			Vector2 position = new Vector2(GraphicsDevice.Viewport.Width + enemyTexture.Width / 2, random.Next(100, GraphicsDevice.Viewport.Height - 100));
+
+			// Create an enemy
+			Enemy enemy = new Enemy();
+
+			// Initialize the enemy
+			enemy.Initialize(enemyAnimation, position);
+
+			// Add the enemy to the active enemies list
+			enemies.Add(enemy);
+		}
     }
 }
