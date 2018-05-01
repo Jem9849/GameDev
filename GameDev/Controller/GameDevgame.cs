@@ -127,6 +127,20 @@ namespace GameDev.Controller
                 player.Position.Y += playerMoveSpeed;
             }
 
+            // No out of bounds
+            player.Position.X = MathHelper.Clamp(player.Position.X, 0,
+                GraphicsDevice.Viewport.Width - player.Width);
+            player.Position.Y = MathHelper.Clamp(player.Position.Y,
+                0, GraphicsDevice.Viewport.Height - player.Height);
+
+            // Save the previous state of keys to determine single key presses
+            previousGamePadState = currentGamePadState;
+            previousKeyboardState = currentKeyboardState;
+
+            // Read current keys and store
+            currentKeyboardState = Keyboard.GetState();
+            currentGamePadState = GamePad.GetState(PlayerIndex.One);
+
             base.Update(gameTime);
         }
 
