@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{7204AF1F-8302-4206-AA97-D6D70C17169F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameDev/View/ParallaxingBackground.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameDev/Model/Enemy.cs">
     <Files>
       <File FileName="GameDev/View/ParallaxingBackground.cs" Line="28" Column="64" />
-      <File FileName="GameDev/Controller/GameDevgame.cs" Line="200" Column="29" />
+      <File FileName="GameDev/Controller/GameDevgame.cs" Line="192" Column="30" />
+      <File FileName="GameDev/Model/Enemy.cs" Line="7" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
