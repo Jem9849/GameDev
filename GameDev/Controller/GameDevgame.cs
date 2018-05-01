@@ -31,6 +31,14 @@ namespace GameDev.Controller
         // A movement speed for the player
         private float playerMoveSpeed;
 
+		// Image used to display the static background
+		private Texture2D mainBackground;
+
+		// Parallaxing Layers
+		private ParallaxingBackground bgLayer1;
+		private ParallaxingBackground bgLayer2;
+
+
         public GameDevgame()
         {
             graphics = new GraphicsDeviceManager(this);
