@@ -74,11 +74,19 @@ namespace GameDev.Model
 
 		public void Update()
 		{
-			
+			// Projectiles always move to the right
+			Position.X += projectileMoveSpeed;
+
+			// Deactivate the bullet if it goes out of screen
+			if (Position.X + Texture.Width / 2 > viewport.Width)
+			{
+				active = false;
+			}
 		}
-		public void Draw()
+
+		public void Draw(SpriteBatch spriteBatch)
 		{
-			
+			spriteBatch.Draw(Texture, Position, null, Color.White, 0f, new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
 		}
 	}
 }
