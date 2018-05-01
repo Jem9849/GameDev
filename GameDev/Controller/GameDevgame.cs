@@ -19,6 +19,16 @@ namespace GameDev.Controller
         // Represents the player 
         private Player player;
 
+        // Keyboard states used to determine key presses
+        private KeyboardState currentKeyboardState;
+        private KeyboardState previousKeyboardState;
+
+        // Gamepad states used to determine button presses
+        private GamePadState currentGamePadState;
+        private GamePadState previousGamePadState;
+
+        // A movement speed for the player
+        private float playerMoveSpeed;
 
         public GameDevgame()
         {
@@ -38,6 +48,9 @@ namespace GameDev.Controller
 
             // Initialize the player class
             player = new Player();
+
+            // Set a constant move speed
+            playerMoveSpeed = 8.0f;
 
             base.Initialize();
         }
@@ -83,6 +96,12 @@ namespace GameDev.Controller
                 Exit();
 
             // TODO: Add your update logic here
+
+            //Thumbstick Controls
+            player.Position.X += currentGamePadState.ThumbSticks.Left.X
+                * playerMoveSpeed;
+            player.Position.Y += currentGamePadState.ThumbSticks.Left.Y
+                * playerMoveSpeed;
 
             base.Update(gameTime);
         }
