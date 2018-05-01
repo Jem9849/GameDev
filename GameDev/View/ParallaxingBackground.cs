@@ -17,7 +17,7 @@ namespace GameDev.View
         // The speed which the background is moving
         private int speed;
 
-        public void Initialize(ContentManger content, String texturePath, int screenWidth, int speed)
+        public void Initialize(ContentManager content, String texturePath, int screenWidth, int speed)
 		{
 			// Load background texture
 			texture = content.Load<Texture2D>(texturePath);
