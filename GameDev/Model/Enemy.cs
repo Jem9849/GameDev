@@ -97,10 +97,26 @@ namespace GameDev.Model
 		}
 
 
-		public void Update()
+		public void Update(GameTime gameTime)
 		{
-			
+			// The enemy always moves to the left so decrement it's xposition
+			Position.X -= enemyMoveSpeed;
+
+			// Update the position of the Animation
+			enemyAnimation.Position = Position;
+
+			// Update Animation
+			enemyAnimation.Update(gameTime);
+
+			// If the enemy is past the screen or its health reaches 0 then deactivate it
+			if (Position.X < -Width || Health <= 0)
+			{
+				// By setting the Active flag to false, the game will remove this object from the
+				// active game list
+				Active = false;
+			}
 		}
+
 
 		public void Draw()
 		{
