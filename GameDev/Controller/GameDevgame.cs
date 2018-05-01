@@ -61,6 +61,12 @@ namespace GameDev.Controller
             // Set a constant move speed
             playerMoveSpeed = 8.0f;
 
+			// Load the parallaxing background
+			bgLayer1.Initialize(Content, "Texture/bgLayer1", GraphicsDevice.Viewport.Width, -1);
+			bgLayer2.Initialize(Content, "Texture/bgLayer2", GraphicsDevice.Viewport.Width, -2);
+
+			mainBackground = Content.Load<Texture2D>("Texture/mainbackground");
+
             base.Initialize();
         }
 
