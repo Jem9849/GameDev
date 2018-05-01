@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 // Reference for all Model objects
 using GameDev.Model;
@@ -37,6 +38,18 @@ namespace GameDev.Controller
 		// Parallaxing Layers
 		private ParallaxingBackground bgLayer1;
 		private ParallaxingBackground bgLayer2;
+
+		// Enemies
+		private Texture2D enemyTexture;
+		private List<Enemy> enemies;
+
+		// The rate at which the enemies appear
+		private TimeSpan enemySpawnTime;
+		private TimeSpan previousSpawnTime;
+
+		// A random number generator
+		private Random random;
+
 
 
         public GameDevgame()
