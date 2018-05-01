@@ -17,9 +17,24 @@ namespace GameDev.View
         // The speed which the background is moving
         private int speed;
 
-        public void Initialize()
-        {
+        public void Initialize(ContentManger content, String texturePath, int screenWidth, int speed)
+		{
+			// Load background texture
+			texture = content.Load<Texture2D>(texturePath);
 
+			// Speed set
+			this.speed = speed;
+
+			// Screen tile needed by dividing screen with texture width.
+			// Add 1 to it so no gap
+			positions = new Vector2[screenWidth / texture.Width + 1];
+
+			// Inital positions
+			for (int i = 0; i < positions.Length; i++)
+			{
+				// Tiles side by side
+				positions[i] = new Vector2(i * texture.Width, 0);
+			}
         }
         public void Update()
         {
