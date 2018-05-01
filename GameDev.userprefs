@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{7204AF1F-8302-4206-AA97-D6D70C17169F}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="GameDev/View/ParallaxingBackground.cs">
     <Files>
-      <File FileName="GameDev/View/ParallaxingBackground.cs" Line="21" Column="4" />
+      <File FileName="GameDev/View/ParallaxingBackground.cs" Line="28" Column="64" />
       <File FileName="GameDev/Controller/GameDevgame.cs" Line="200" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
