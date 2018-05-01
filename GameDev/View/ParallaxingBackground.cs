@@ -36,13 +36,44 @@ namespace GameDev.View
 				positions[i] = new Vector2(i * texture.Width, 0);
 			}
         }
+
         public void Update()
         {
+			// Update positions
+			for (int i = 0; i < positions.Length; i++)
+			{
+				// Update position of screen by adding speed
+				positions[i].X += speed;
 
-        }
-        public void Draw()
-        {
+				// If speed move background left
+				if (speed <= 0)
+				{
+					// Check and replace texture if out of screen
+					if (positions[i].X <= -texture.Width)
+					{
+						positions[i].X = texture.Width * (positions.Length - 1);
+					}
+				}
 
+				// If speed move background right
+				else
+				{
+					// Check and replace texture if out of screen
+					if (positions[i].X >= texture.Width * (positions.Length - 1))
+					{
+						positions[i].X = -texture.Width;
+					}
+				}
+			}
         }
+
+
+		public void Draw(SpriteBatch spriteBatch)
+		{
+			for (int i = 0; i < positions.Length; i++)
+			{
+				spriteBatch.Draw(texture, positions[i], Color.White);
+			}
+		}
     }
 }
