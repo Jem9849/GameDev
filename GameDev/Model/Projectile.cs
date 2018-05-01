@@ -59,10 +59,19 @@ namespace GameDev.Model
 		private float projectileMoveSpeed;
 
 
-		public void Initialize()
+		public void Initialize(Viewport viewport, Texture2D texture, Vector2 position)
 		{
-			
+			this.texture = texture;
+			this.Position = position;
+			this.viewport = viewport;
+
+			active = true;
+
+			damage = 2;
+
+			projectileMoveSpeed = 20f;
 		}
+
 		public void Update()
 		{
 			
