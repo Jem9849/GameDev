@@ -209,6 +209,9 @@ namespace GameDev.Controller
 			// Update the enemies
 			UpdateEnemies(gameTime);
 
+			// Updates the collision
+			UpdateCollision();
+
 
             base.Update(gameTime);
         }
