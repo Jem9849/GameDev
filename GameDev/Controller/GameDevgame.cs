@@ -51,7 +51,12 @@ namespace GameDev.Controller
 		// A random number generator
 		private Random random;
 
+		private Texture2D projectileTexture;
+		private List<Projectile> projectiles;
 
+		// Rate of fire
+		private TimeSpan fireTime;
+		private TimeSpan previousFireTime;
 
         public GameDevgame()
         {
