@@ -1,42 +1,46 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GameDev.View;
 
 namespace GameDev.Model
 {
     public class Player
     {
-        public void Initialize(Texture2D texture, Vector2 position)
+        // Initialize the player
+        public void Initialize(Animation animation, Vector2 position)
         {
-            PlayerTexture = texture;
+            playerAnimation = animation;
 
-            // Start pos for player near middle and back.
+            // Set the starting position of the player around the middle of the screen and to the back
             Position = position;
 
-            // Active true
+            // Set the player to be active
             Active = true;
 
-            // Player health
+            // Set the player health
             Health = 100;
         }
 
-        public void Update()
+        // Update the player animation
+        public void Update(GameTime gameTime)
         {
-
+            playerAnimation.Position = Position;
+            playerAnimation.Update(gameTime);
         }
 
+        // Draw the player
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None,
-                0f);
+            playerAnimation.Draw(spriteBatch);
         }
 
         // Animation for Player
-        private Texture2D playerTexture;
-        public Texture2D PlayerTexture
+        private Animation playerAnimation;
+        public Animation PlayerAnimation
         {
-            get { return playerTexture; }
-            set { playerTexture = value; }
+            get { return playerAnimation; }
+            set { playerAnimation = value; }
         }
 
         // Relative position of player to upper left. Also structs can't be used as a property.
@@ -58,16 +62,16 @@ namespace GameDev.Model
             set { health = value; }
         }
 
-        // The width of player
+        // Get the width of the player ship
         public int Width
         {
-            get { return PlayerTexture.Width; }
+            get { return playerAnimation.FrameWidth; }
         }
 
-        // The height of player
+        // Get the height of the player ship
         public int Height
         {
-            get { return PlayerTexture.Height; }
+            get { return playerAnimation.FrameHeight; }
         }
     }
 
