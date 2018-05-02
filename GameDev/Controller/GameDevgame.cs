@@ -430,6 +430,7 @@ namespace GameDev.Controller
 		{
 			Animation explosion = new Animation();
 			explosion.Initialize(explosionTexture, position, 134, 134, 12, 45, Color.White, 1f, false);
+			explosions.Add(explosion);
 		}
 
 		private void UpdateExplosions(GameTime gameTime)
