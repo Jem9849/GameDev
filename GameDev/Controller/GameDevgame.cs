@@ -101,6 +101,12 @@ namespace GameDev.Controller
 			// Initialize our random number generator
 			random = new Random();
 
+			projectiles = new List<Projectile>();
+
+			// Set the laser to fire every quarter second
+			fireTime = TimeSpan.FromSeconds(.15f);
+
+
 
             base.Initialize();
         }
@@ -125,8 +131,7 @@ namespace GameDev.Controller
 
 			enemyTexture = Content.Load<Texture2D>("Animation/mineAnimation");
 
-
-
+			projectileTexture = Content.Load<Texture2D>("Texture/laser");
 
 
             // TODO: use this.Content to load your game content here
