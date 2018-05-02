@@ -242,6 +242,9 @@ namespace GameDev.Controller
 			// Updates projectile
 			UpdateProjectiles();
 
+			// Update explosions
+			UpdateExplosions(gameTime);
+
 
             base.Update(gameTime);
         }
@@ -276,6 +279,12 @@ namespace GameDev.Controller
 			for (int i = 0; i < projectiles.Count; i++)
 			{
 				projectiles[i].Draw(spriteBatch);
+			}
+
+			// Draw explosions
+			for (int i = 0; i < explosions.Count; i++)
+			{
+				explosions[i].Draw(spriteBatch);
 			}
 
 
@@ -422,6 +431,18 @@ namespace GameDev.Controller
 		{
 			Animation explosion = new Animation();
 			explosion.Initialize(explosionTexture, position, 134, 134, 12, 45, Color.White, 1f, false);
+		}
+
+		private void UpdateExplosions(GameTime gameTime)
+		{
+			for (int i = explosions.Count - 1; i >= 0; i--)
+			{
+				explosions[i].Update(gameTime);
+				if (explosions[i].Active == false)
+				{
+					explosions.RemoveAt(i);
+				}
+			}
 		}
     }
 }
