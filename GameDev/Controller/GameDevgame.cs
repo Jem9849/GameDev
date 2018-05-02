@@ -73,6 +73,12 @@ namespace GameDev.Controller
 		// The music played during gameplay
 		private Song gameplayMusic;
 
+		//Number that holds the player score
+		private int score;
+		// The font used to display UI elements
+		private SpriteFont font;
+
+
 
         public GameDevgame()
         {
@@ -124,6 +130,10 @@ namespace GameDev.Controller
 
 			explosions = new List<Animation>();
 
+			//Set player's score to zero
+			score = 0;
+
+
 
             base.Initialize();
         }
@@ -161,6 +171,10 @@ namespace GameDev.Controller
 
 			// Start the music right away
 			PlayMusic(gameplayMusic);
+
+			// Load the score font
+			// font = Content.Load("Font/gameFont");
+
 
 
             // TODO: use this.Content to load your game content here
@@ -202,6 +216,12 @@ namespace GameDev.Controller
 				laserSound.Play();
 			}
 
+			// reset score if player health goes to zero
+			if (player.Health <= 0)
+			{
+			    player.Health = 100;
+			    score = 0;
+			}
         }
 
         protected override void Update(GameTime gameTime)
@@ -311,6 +331,12 @@ namespace GameDev.Controller
 				explosions[i].Draw(spriteBatch);
 			}
 
+			// Draw the score
+			//spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y), Color.White);
+			// Draw the player health
+			//spriteBatch.DrawString(font, "health: " + player.Health, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
+
+
 
             // Stop drawing
             spriteBatch.End();
@@ -367,6 +393,9 @@ namespace GameDev.Controller
 						explosionSound.Play();
 					}
 					enemies.RemoveAt(i);
+
+					//Add to the player's score
+					score += enemies[i].ScoreValue;
 				}
 			}
 		}
