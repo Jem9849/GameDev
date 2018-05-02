@@ -74,8 +74,6 @@ namespace GameDev.Controller
 		private Song gameplayMusic;
 
 
-
-
         public GameDevgame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -154,6 +152,16 @@ namespace GameDev.Controller
 
 			explosionTexture = Content.Load<Texture2D>("Animation/explosion");
 
+			// Load the music
+			gameplayMusic = Content.Load<Song>("Sound/gameMusic");
+
+			// Load the laser and explosion sound effect
+			laserSound = Content.Load<SoundEffect>("Sound/laserFire");
+			explosionSound = Content.Load<SoundEffect>("Sound/explosion");
+
+			// Start the music right away
+			PlayMusic(gameplayMusic);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -190,6 +198,8 @@ namespace GameDev.Controller
 
 				// Projectile at front and center
 				AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
+				// Laser sound
+				laserSound.Play();
 			}
 
         }
@@ -353,6 +363,8 @@ namespace GameDev.Controller
 					{
 						// Add explosion
 						AddExplosion(enemies[i].Position);
+						// Explosion sound
+						explosionSound.Play();
 					}
 					enemies.RemoveAt(i);
 				}
@@ -457,6 +469,21 @@ namespace GameDev.Controller
 					explosions.RemoveAt(i);
 				}
 			}
+		}
+
+		private void PlayMusic(Song song)
+		{
+			// Music plays when game not tethered. Try Catch used.
+			try
+			{
+				// Play
+				MediaPlayer.Play(song);
+
+				// Loop
+				MediaPlayer.IsRepeating = true;
+			}
+
+			catch { } // No exception is handled so it is empty.
 		}
     }
 }
