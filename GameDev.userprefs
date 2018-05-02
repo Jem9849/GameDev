@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="GameDev/Controller/GameDevgame.cs">
     <Files>
       <File FileName="GameDev/View/ParallaxingBackground.cs" Line="18" Column="27" />
-      <File FileName="GameDev/Controller/GameDevgame.cs" Line="432" Column="86" />
+      <File FileName="GameDev/Controller/GameDevgame.cs" Line="342" Column="31" />
       <File FileName="GameDev/Model/Enemy.cs" Line="66" Column="46" />
       <File FileName="GameDev/Model/Projectile.cs" Line="71" Column="4" />
     </Files>
