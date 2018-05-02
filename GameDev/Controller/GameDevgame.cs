@@ -338,5 +338,12 @@ namespace GameDev.Controller
 				}
 			}
 		}
+
+		private void AddProjectile(Vector2 position)
+		{
+			Projectile projectile = new Projectile();
+			projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
+			projectiles.Add(projectile);
+		}
     }
 }
