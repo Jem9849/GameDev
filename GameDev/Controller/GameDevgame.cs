@@ -232,6 +232,9 @@ namespace GameDev.Controller
 			// Updates the collision
 			UpdateCollision();
 
+			// Updates projectile
+			UpdateProjectiles();
+
 
             base.Update(gameTime);
         }
@@ -260,6 +263,12 @@ namespace GameDev.Controller
 			for (int i = 0; i<enemies.Count; i++)
 			{
 				enemies[i].Draw(spriteBatch);
+			}
+
+			// Draw Projectiles
+			for (int i = 0; i < projectiles.Count; i++)
+			{
+				projectiles[i].Draw(spriteBatch);
 			}
 
 
@@ -347,6 +356,31 @@ namespace GameDev.Controller
 					}
 				}
 			}
+
+			for (int i = 0; i < projectiles.Count; i++)
+			{
+				for (int j = 0; j < enemies.Count; j++)
+				{
+					// Create rectangles to determine collision
+					rectangle1 = new Rectangle((int)projectiles[i].Position.X -
+											   projectiles[i].Width / 2,
+											   (int)projectiles[i].Position.Y - 
+					                           projectiles[i].Height / 2,
+											   projectiles[i].Width, projectiles[i].Height);
+					rectangle2 = new Rectangle((int)enemies[j].Position.X -
+											   enemies[j].Width / 2,
+											   (int)enemies[j].Position.Y -
+											   enemies[j].Height / 2,
+											   enemies[j].Width,
+											   enemies[j].Height);
+					// Determine collision
+					if (rectangle1.Intersects(rectangle2))
+					{
+						enemies[j].Health -= projectiles[i].Damage;
+						projectiles[i].Active = false;
+					}
+				}
+			}
 		}
 
 		private void AddProjectile(Vector2 position)
@@ -354,6 +388,20 @@ namespace GameDev.Controller
 			Projectile projectile = new Projectile();
 			projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
 			projectiles.Add(projectile);
+		}
+
+		private void UpdateProjectiles()
+		{
+			// Update projectiles
+			for (int i = projectiles.Count - 1; i >= 0; i--)
+			{
+				projectiles[i].Update();
+
+				if (projectiles[i].Active == false)
+				{
+					projectiles.RemoveAt(i);
+				}
+			}
 		}
     }
 }
