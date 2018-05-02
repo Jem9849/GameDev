@@ -138,6 +138,8 @@ namespace GameDev.Controller
 
 			projectileTexture = Content.Load<Texture2D>("Texture/laser");
 
+			explosionTexture = Content.Load<Texture2D>("Animation/explosion");
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -407,6 +409,12 @@ namespace GameDev.Controller
 					projectiles.RemoveAt(i);
 				}
 			}
+		}
+
+		private void AddExplosion(Vector2 position)
+		{
+			Animation explosion = new Animation();
+			explosion.Initialize(explosionTexture, position, 134, 134, 12, 45, Color.White, 1f, false);
 		}
     }
 }
