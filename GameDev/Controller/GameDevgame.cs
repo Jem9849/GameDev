@@ -3,6 +3,9 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+
 
 // Reference for all Model objects
 using GameDev.Model;
@@ -60,6 +63,17 @@ namespace GameDev.Controller
 
 		private Texture2D explosionTexture;
 		private List<Animation> explosions;
+
+		// The sound that is played when a laser is fired
+		private SoundEffect laserSound;
+
+		// The sound used when the player or an enemy dies
+		private SoundEffect explosionSound;
+
+		// The music played during gameplay
+		private Song gameplayMusic;
+
+
 
 
         public GameDevgame()
