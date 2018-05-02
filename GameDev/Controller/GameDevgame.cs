@@ -161,6 +161,16 @@ namespace GameDev.Controller
 			bgLayer1.Update();
 			bgLayer2.Update();
 
+			// Fire Interval
+			if (gameTime.TotalGameTime - previousFireTime > fireTime)
+			{
+				// Reset time
+				previousFireTime = gameTime.TotalGameTime;
+
+				// Projectile at front and center
+				AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
+			}
+
         }
 
         protected override void Update(GameTime gameTime)
