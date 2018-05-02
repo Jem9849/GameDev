@@ -58,6 +58,10 @@ namespace GameDev.Controller
 		private TimeSpan fireTime;
 		private TimeSpan previousFireTime;
 
+		private Texture2D explosionTexture;
+		private List<Animation> explosions;
+
+
         public GameDevgame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -106,6 +110,7 @@ namespace GameDev.Controller
 			// Set the laser to fire every quarter second
 			fireTime = TimeSpan.FromSeconds(.15f);
 
+			explosions = new List<Animation>();
 
 
             base.Initialize();
