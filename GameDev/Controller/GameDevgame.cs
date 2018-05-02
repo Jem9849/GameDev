@@ -327,6 +327,13 @@ namespace GameDev.Controller
 				{
 					enemies.RemoveAt(i);
 				}
+
+				// If enemy is basically dead
+				if (enemies[i].Health <= 0)
+				{
+					// Add explosion
+					AddExplosion(enemies[i].Position);
+				}
 			}
 		}
 
